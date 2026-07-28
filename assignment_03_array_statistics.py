@@ -39,3 +39,46 @@
 # YOUR CODE BELOW — remove the # symbols from the scaffold and fill it in
 # =============================================================================
 
+def calc_sum(nums):
+    total = 0
+    for n in nums:
+        total = total + n
+    return total
+
+
+def calc_avg(nums):
+    total = calc_sum(nums)
+    return total / len(nums)
+
+def calc_max(nums):
+    highest = nums[0]
+    for n in nums:
+        if n > highest:
+            highest = n
+    return highest
+
+def calc_min(nums):
+    lowest = nums[0]
+    for n in nums:
+        if n < lowest:
+            lowest = n
+    return lowest
+
+
+
+count = int(input("How many numbers? "))
+
+if count <= 0:
+    print("Error: Number must be a positive integer.")
+else:
+    numbers = []
+ 
+    for i in range(1, count + 1):
+        val = int(input(f"Enter number {i}: "))
+        numbers.append(val)
+    
+    print("\nResults:")
+    print("Sum:    ", calc_sum(numbers))
+    print("Average:", calc_avg(numbers))
+    print("Maximum:", calc_max(numbers))
+    print("Minimum:", calc_min(numbers))

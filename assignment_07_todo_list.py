@@ -79,3 +79,63 @@
 # YOUR CODE BELOW — remove the # symbols from the scaffold and fill it in
 # =============================================================================
 
+
+def add_task(tasks):
+    task = input("Enter task: ")
+    tasks.append(task)
+    print("Task added:", task)
+
+
+
+def view_tasks(tasks):
+    if len(tasks) == 0:
+        print("No tasks in the list.")
+    else:
+        print("\nYour Tasks:")
+        count = 1
+        for t in tasks:
+            print(count, ".", t)
+            count = count + 1
+
+
+
+def delete_task(tasks):
+    if len(tasks) == 0:
+        print("No tasks to delete.")
+    else:
+        view_tasks(tasks)
+        num = int(input("Enter task number to delete: "))
+        
+        # Check if number is valid
+        if num > 0 and num <= len(tasks):
+            removed = tasks.pop(num - 1)
+            print("Task", removed, "has been removed.")
+        else:
+            print("Invalid task number!")
+
+
+todo_list = []
+running = True
+
+while running:
+    print("\n============================")
+    print("      TO-DO LIST MENU       ")
+    print("============================")
+    print("1. Add task")
+    print("2. View tasks")
+    print("3. Delete task")
+    print("4. Quit")
+    
+    choice = input("Enter your choice (1-4): ")
+    
+    if choice == "1":
+        add_task(todo_list)
+    elif choice == "2":
+        view_tasks(todo_list)
+    elif choice == "3":
+        delete_task(todo_list)
+    elif choice == "4":
+        print("Goodbye!")
+        running = False
+    else:
+        print("Invalid choice, try again.")

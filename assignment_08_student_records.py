@@ -90,3 +90,104 @@
 # YOUR CODE BELOW — remove the # symbols from the scaffold and fill it in
 # =============================================================================
 
+
+def get_average(scores):
+    if len(scores) == 0:
+        return 0.0
+    
+    total = 0
+    for s in scores:
+        total = total + s
+        
+    avg = total / len(scores)
+    return round(avg, 2)
+
+
+
+def add_student(students):
+    name = input("Student name: ")
+    student_id = input("Student ID: ")
+    num_scores = int(input("How many scores? "))
+    
+    scores = []
+    for i in range(1, num_scores + 1):
+        score = int(input(f"Enter score {i}: "))
+        scores.append(score)
+        
+    student = {
+        "name": name,
+        "id": student_id,
+        "scores": scores
+    }
+    
+    students.append(student)
+    print(f'Student "{name}" added successfully.')
+
+
+
+def display_students(students):
+    if len(students) == 0:
+        print("No students in the list.")
+    else:
+        print("--------------------------------------------------")
+        print("Name            ID          Scores         Average")
+        print("--------------------------------------------------")
+        
+        for s in students:
+            # Turn list of scores into a string with commas
+            score_str = ""
+            for i in range(len(s["scores"])):
+                if i == len(s["scores"]) - 1:
+                    score_str = score_str + str(s["scores"][i])
+                else:
+                    score_str = score_str + str(s["scores"][i]) + ", "
+            
+            avg = get_average(s["scores"])
+            
+            # Print row with simple spacing
+            print(f"{s['name']:15} {s['id']:11} {score_str:14} {avg}")
+            
+        print("--------------------------------------------------")
+
+
+
+def calc_student_avg(students):
+    search_id = input("Enter student ID: ")
+    found = False
+    
+    for s in students:
+        if str(s["id"]) == search_id:
+            avg = get_average(s["scores"])
+            print(f"{s['name']}'s average score: {avg}")
+            found = True
+            break
+            
+    if not found:
+        print("Student ID not found.")
+
+
+
+running = True
+
+while running:
+    print("\n================================")
+    print("   STUDENT RECORD SYSTEM MENU   ")
+    print("================================")
+    print("1. Add student")
+    print("2. Display all students")
+    print("3. Calculate average score")
+    print("4. Quit")
+    
+    choice = input("Enter your choice (1-4): ")
+    
+    if choice == "1":
+        add_student(student_list)
+    elif choice == "2":
+        display_students(student_list)
+    elif choice == "3":
+        calc_student_avg(student_list)
+    elif choice == "4":
+        print("Goodbye!")
+        running = False
+    else:
+        print("Invalid choice, try again.")

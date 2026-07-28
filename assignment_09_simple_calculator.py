@@ -63,8 +63,92 @@
 # - Handle invalid menu choices gracefully.
 #
 
-#
-# =============================================================================
-# YOUR CODE BELOW — remove the # symbols from the scaffold and fill it in
-# =============================================================================
+def add(a, b):
+    return a + b
 
+
+def subtract(a, b):
+    return a - b
+
+
+def multiply(a, b):
+    return a * b
+
+# Function for Division
+def divide(a, b):
+    if b == 0:
+        return None
+    return round(a / b, 2)
+
+
+def modulus(a, b):
+    if b == 0:
+        return None
+    return a % b
+
+
+def power(a, b):
+    return a ** b
+
+
+
+running = True
+
+while running:
+    print("\n============================")
+    print("      SIMPLE CALCULATOR     ")
+    print("============================")
+    print("1. Addition")
+    print("2. Subtraction")
+    print("3. Multiplication")
+    print("4. Division")
+    print("5. Modulus")
+    print("6. Exponentiation")
+    print("7. Quit")
+    
+    choice = input("Select an operation (1-7): ")
+    
+    if choice == "7":
+        print("Goodbye!")
+        running = False
+    elif choice in ["1", "2", "3", "4", "5", "6"]:
+        num1 = float(input("Enter first number : "))
+        num2 = float(input("Enter second number: "))
+        
+        
+            num1 = int(num1)
+        if num2 == int(num2):
+            num2 = int(num2)
+            
+        if choice == "1":
+            ans = add(num1, num2)
+            print("Result:", num1, "+", num2, "=", ans)
+            
+        elif choice == "2":
+            ans = subtract(num1, num2)
+            print("Result:", num1, "-", num2, "=", ans)
+            
+        elif choice == "3":
+            ans = multiply(num1, num2)
+            print("Result:", num1, "*", num2, "=", ans)
+            
+        elif choice == "4":
+            ans = divide(num1, num2)
+            if ans is None:
+                print("Error: Cannot divide by zero.")
+            else:
+                print("Result:", num1, "/", num2, "=", ans)
+                
+        elif choice == "5":
+            ans = modulus(num1, num2)
+            if ans is None:
+                print("Error: Cannot perform modulus by zero.")
+            else:
+                print("Result:", num1, "%", num2, "=", ans)
+                
+        elif choice == "6":
+            ans = power(num1, num2)
+            print("Result:", num1, "**", num2, "=", ans)
+            
+    else:
+        print("Invalid choice, try again.")
